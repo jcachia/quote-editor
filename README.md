@@ -1,24 +1,12 @@
-# README
+# Quote Editor
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an example app using Rails & Turbo
 
-Things you may want to cover:
+* created with: `rails new quote-editor --css=sass --javascript=esbuild --database=postgresql`
 
-* Ruby version
+* uses simple form gem.  init with:
+`bin/rails generate simple_form:install`
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
 
 * ...
