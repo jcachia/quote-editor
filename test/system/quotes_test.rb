@@ -15,13 +15,13 @@ class QuotesTest < ApplicationSystemTestCase
     # Then, when we click on the "New Quote" link
     # we expect to be taken to the Quotes#new page
     # which has the title "New Quote"
-    click_on "New Quote"
-    assert_selector "h1", text: "New Quote"
+    click_on "New quote"
+    assert_selector "h1", text: "New quote"
 
     # When we fill in the name input with "My Quote"
     # and we click on the "Create Quote" button
     fill_in "Name", with: "My Quote"
-    click_on "Create Quote"
+    click_on "Create quote"
 
     # Then we expect to be taken to the Quotes#index page
     # we expect to see the newly created quote in the list of quotes
