@@ -1,6 +1,6 @@
 # Quote Editor
 
-This is an example app using Rails & Turbo
+This is an example app using Rails & Turbo - https://www.hotrails.dev/turbo-rails
 
 * created with: `rails new quote-editor --css=sass --javascript=esbuild --database=postgresql`
 
