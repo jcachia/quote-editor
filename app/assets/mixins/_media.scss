@@ -1,0 +1,10 @@
+// This mixin is used to create media queries for different screen sizes.
+// see https: //www.hotrails.dev/turbo-rails/css-ruby-on-rails
+
+@mixin media($query) {
+  @if $query ==tabletAndUp {
+    @media (min-width: 50rem) {
+      @content;
+    }
+  }
+}
