@@ -1,0 +1,7 @@
+// app/assets/stylesheets/components/_turbo_progress_bar.scss
+// As Turbo Drive overrides the browser's default behavior for link clicks and form submissions, the browser' s default progress bar/loaders won't work as expected anymore.
+// Turbo has our back and has a built-in replacement for the browser's default progress bar, and we can style it to meet our application's design system
+
+.turbo-progress-bar {
+  background: linear-gradient(to right, var(--color-primary), var(--color-primary-rotate));
+}
