@@ -6,29 +6,6 @@ class QuotesTest < ApplicationSystemTestCase
     @quote = quotes(:first)
   end
 
-  test "creating a new quote from the index" do
-    # When we visit the Quotes#index page
-    # we expect to see the heading "Quotes"
-    visit quotes_path
-    assert_selector "h1", text: "Quotes"
-
-    # Then, when we click on the "New Quote" link
-    # we expect to be taken to the Quotes#new page
-    # which has the title "New Quote"
-    click_on "New quote"
-    assert_selector "h1", text: "New quote"
-
-    # When we fill in the name input with "My Quote"
-    # and we click on the "Create Quote" button
-    fill_in "Name", with: "My Quote"
-    click_on "Create quote"
-
-    # Then we expect to be taken to the Quotes#index page
-    # we expect to see the newly created quote in the list of quotes
-    assert_selector "h1", text: "Quotes"
-    assert_text "My Quote"
-  end
-
   test "showing a quote from the index" do
     visit quotes_path
 
@@ -39,23 +16,54 @@ class QuotesTest < ApplicationSystemTestCase
     assert_selector "h1", text: @quote.name
   end
 
-  test "updating a quote from the index" do
+  test "creating a new quote from the index" do
+    # When we visit the Quotes#index page
+    # we expect to see the heading "Quotes"
     visit quotes_path
+    assert_selector "h1", text: "Quotes"
 
-    # When we click on the "Edit" link of the quote
-    # we expect to be taken to the Quotes#edit page
-    # which has the title "Editing Quote"
-    click_link "Edit", match: :first
-    assert_selector "h1", text: "Edit quote"
+    # Then, when we click on the "New Quote" link
+    # we expect to be taken to the Quotes#new page
+    # which has the title "New Quote"
+    click_on "New quote"
 
-    # When we fill in the name input with "My Updated Quote"
-    # and we click on the "Update Quote" button
+    # When we fill in the name input with "My Quote"
+    fill_in "Name", with: "My Quote"
+
+    # We expect to remain to the Quotes#index page
+    assert_selector "h1", text: "Quotes"
+    
+    # Then we save the quote
+    click_on "Create quote"
+
+    # We still expect to be on the Quotes#index page
+    assert_selector "h1", text: "Quotes"
+
+    # and we expect to see the newly created quote in the list of quotes
+    assert_text "My Quote"
+  end
+
+  test "updating a quote from the index" do
+    # When we visit the Quotes#index page
+    # we expect to see the heading "Quotes"
+    visit quotes_path
+    assert_selector "h1", text: "Quotes"
+
+    # When we click on the "Edit" link on the first quote
+    # and update the name of the quote
+    click_on "Edit", match: :first
     fill_in "Name", with: "Updated quote"
+
+    # We expect to remain on the Quotes#index page
+    assert_selector "h1", text: "Quotes"
+
+    # Then we save the quote
     click_on "Update quote"
 
-    # Then we expect to be taken to the Quotes#index page
-    # we expect to see the updated quote in the list of quotes
+    # We still expect to be on the Quotes#index page
     assert_selector "h1", text: "Quotes"
+
+    # we expect to see the updated quote in the list of quotes
     assert_text "Updated quote"
   end
 
