@@ -8,5 +8,9 @@
   <% end %>
 
   <%= f.input :name, input_html: { autofocus: true } %>
+  <%= link_to "Cancel", quotes_path, class: "btn btn--light" %>
+  <%# The link is within a Turbo Frame of id new_quote, so Turbo will only replace the content of this frame
+The link navigates to the Quotes#index page that contains an empty Turbo Frame with id new_quote
+Turbo replaces the content of the new_quote frame with the empty content, so the form disappears %>
   <%= f.submit class: "btn btn--secondary" %>
 <% end %>

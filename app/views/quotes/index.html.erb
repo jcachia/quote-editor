@@ -1,10 +1,20 @@
 <%# app/views/quotes/index.html.erb %>
 
 <main class="container">
+<%# Wrapping this div in a turbo_frame_tag %>
+<%# This results in a turbo-frame like this %>
+<%# <turbo-frame id="first_turbo_frame"> %>
   <div class="header">
     <h1>Quotes</h1>
-    <%= link_to "New quote", new_quote_path, class: "btn btn--primary" %>
+    <%# Defining a data-turbo-frame attribute will target that frame instead %>
+    <%# _top is special that represents the whole page %>
+    <%= link_to "New quote", new_quote_path, class: "btn btn--primary", data: { turbo_frame: dom_id(Quote.new) } %>
   </div>
 
-  <%= render @quotes %>
+  <%# empty turbo frame to house the new quote form when the create button is clicked %>
+  <%= turbo_frame_tag Quote.new %>
+
+  <%= turbo_frame_tag "quotes" do %>
+    <%= render @quotes %>
+  <% end %>
 </main>
