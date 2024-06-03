@@ -1,4 +1,6 @@
 class Quote < ApplicationRecord
+  belongs_to :company
+
   validates :name, presence: true
 
   scope :ordered, -> { order(id: :desc) }
@@ -15,6 +17,9 @@ class Quote < ApplicationRecord
   # after_destroy_commit -> { broadcast_remove_to "quotes" }
 
   ## All of the above can be shortened to one line:
-  broadcasts_to ->(quote) { "quotes" }, inserts_by: :prepend
+  # broadcasts_to ->(quote) { "quotes" }, inserts_by: :prepend
 
+  ## for security, the ensures that the broadcasts for quotes are limited to the current company.
+  broadcasts_to ->(quote) { [quote.company, "quotes"] }, inserts_by: :prepend
+  
 end

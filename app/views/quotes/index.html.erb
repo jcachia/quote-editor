@@ -1,6 +1,6 @@
 <%# app/views/quotes/index.html.erb %>
 <% # this is what subscribes the page to the quotes stream %>
-<%= turbo_stream_from "quotes" %>
+<%= turbo_stream_from current_company, "quotes" %>
 
 <main class="container">
 <%# Wrapping this div in a turbo_frame_tag %>
