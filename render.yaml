@@ -5,6 +5,12 @@ databases:
     plan: free
 
 services:
+  - type: redis
+    name: quote-editor-redis
+    plan: free
+    maxmemoryPolicy: noeviction
+    ipAllowList: [] # Only allow internal connections
+
   - type: web
     name: quote-editor-web
     runtime: ruby
@@ -17,6 +23,10 @@ services:
         fromDatabase:
           name: quote_editor_db
           property: connectionString
+      - key: REDIS_URL
+        fromService:
+          name: quote-editor-redis
+          property: url
       - key: RAILS_MASTER_KEY
         sync: false
       - key: WEB_CONCURRENCY
