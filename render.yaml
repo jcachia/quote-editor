@@ -26,7 +26,7 @@ services:
       - key: REDIS_URL
         fromService:
           name: quote-editor-redis
-          property: url
+          property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
       - key: WEB_CONCURRENCY
