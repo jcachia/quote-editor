@@ -13,8 +13,8 @@
 
 <%# or simply %>
 <%#= turbo_stream.prepend "quotes" do %>
-  <#%= render @quote %>
-<#% end %>
+  <%#= render @quote %>
+<%# end %>
 
 <%# This next line tells Turbo to update the Turbo Frame with id new_quote with empty content.  %>
 <%= turbo_stream.update Quote.new, "" %>
