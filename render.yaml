@@ -27,6 +27,7 @@ services:
         fromService:
           name: quote-editor-redis
           property: connectionString
+          type: redis
       - key: RAILS_MASTER_KEY
         sync: false
       - key: WEB_CONCURRENCY
