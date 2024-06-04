@@ -18,3 +18,5 @@
 
 <%# This next line tells Turbo to update the Turbo Frame with id new_quote with empty content.  %>
 <%= turbo_stream.update Quote.new, "" %>
+
+<%= render_turbo_stream_flash_messages %>
