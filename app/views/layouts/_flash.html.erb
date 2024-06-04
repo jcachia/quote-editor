@@ -1,0 +1,8 @@
+<%# app/views/layouts/_flash.html.erb %>
+
+<% flash.each do |flash_type, message| %>
+<% # flash message is connected to a RemovalsController thanks to the data-controller="removals" data attribute. When the animation ends, the function remove of the RemovalsController is called thanks to the data-action="animationend->removals#remove data attribute. %>
+  <div class="flash__message" data-controller="removals" data-action="animationend->removals#remove">
+    <%= message %>
+  </div>
+<% end %>
